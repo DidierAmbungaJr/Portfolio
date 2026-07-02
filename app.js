@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const words = [
         "Développeur Full Stack",
         "Élève Ingénieur électronicien",
-        "Passionné d'IoT, de Prototypage & de Making"
+        "Passionné d'AIoT & de Making"
     ];
     let wordIndex = 0;
     let charIndex = 0;
