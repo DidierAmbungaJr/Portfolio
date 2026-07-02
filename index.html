@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Portfolio de Didier Ambunga, étudiant en Génie Électrique & Informatique, développeur React / Django et Maker passionné par l'IoT et le prototypage.">
+    <title>Didier Ambunga | Ingénieur Électricien, Développeur & Maker</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Canvas Background -->
+    <canvas id="bg-canvas"></canvas>
+    <div class="glow-bg-center"></div>
+
+    <!-- Header / Navigation -->
+    <header class="main-header">
+        <div class="logo">
+            <a href="#hero">
+                <span class="tech-tag">&lt;</span>DIDIER<span class="tech-tag">.GEI /&gt;</span>
+            </a>
+        </div>
+        <nav class="nav-menu">
+            <a href="#about" class="nav-link">À propos</a>
+            <a href="#skills" class="nav-link">Compétences</a>
+            <a href="#lab" class="nav-link">Le Lab / Maker</a>
+            <a href="#projects" class="nav-link">Projets</a>
+            <a href="#contact" class="nav-link btn-contact">Me contacter</a>
+        </nav>
+        <div class="system-status">
+            <span class="status-dot"></span>
+            <span class="status-text">SYS_STATUS: ONLINE</span>
+        </div>
+        <button class="mobile-nav-toggle" aria-label="Toggle menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <div class="hire-badge">Disponible pour opportunités & alternance</div>
+                <span class="hero-pretitle">INGÉNIEUR & DÉVELOPPEUR</span>
+                <h1 class="hero-title">Didier <span class="outline-text">Ambunga</span></h1>
+                <h2 class="hero-subtitle">
+                    <span id="typed-text"></span><span class="cursor">|</span>
+                </h2>
+                <p class="hero-description">
+                    Étudiant en <strong>Génie Électrique et Informatique</strong>. Je fusionne le monde physique de
+                    l'électronique et du matériel (IoT, microcontrôleurs) avec la puissance du logiciel moderne.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#lab" class="btn btn-primary">Explorer le Lab</a>
+                    <a href="#projects" class="btn btn-secondary">Voir les Projets</a>
+                </div>
+            </div>
+
+            <div class="hero-metrics">
+                <div class="metric-card">
+                    <span class="metric-val">Étudiant</span>
+                    <span class="metric-lbl">Génie Électrique & Info</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-val">React</span>
+                    <span class="metric-lbl">Frontend Dev</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-val">Django</span>
+                    <span class="metric-lbl">Backend Dev</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-val">Maker</span>
+                    <span class="metric-lbl">AIoT & Electronique</span>
+                </div>
+            </div>
+
+            <a href="#about" class="scroll-indicator" aria-label="Scroll down">
+                <span class="mouse">
+                    <span class="wheel"></span>
+                </span>
+                <span class="arrows">
+                    <span></span>
+                    <span></span>
+                </span>
+            </a>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <h2 class="section-title" data-text="À Propos De Moi">À Propos De Moi</h2>
+            <div class="about-grid">
+                <div class="about-image-wrapper">
+                    <!-- Updated Photo path to CV Profile photo -->
+                    <img src="profile.png" alt="Didier Ambunga Profile" class="profile-img">
+                    <div class="img-border-glow"></div>
+                </div>
+                <div class="about-text-content">
+                    <h3>Construire des ponts entre le Code et le Matériel</h3>
+                    <p>
+                        Étudiant en **génie électrique et informatique** passionné par l'innovation technologique,
+                        j'aspire à concevoir des solutions intelligentes intégrant l'IA, l'IoT et la robotique pour
+                        répondre à des défis sociétaux majeurs. Mon objectif est de mettre ma rigueur technique et ma
+                        créativité au service de l'émergence technologique, en développant des outils à fort impact
+                        communautaire.
+                    </p>
+                    <p>
+                        Grâce à ma formation à la **Faculté Polytechnique de l'Université de Kinshasa**, je maîtrise les
+                        systèmes embarqués, l'analyse de signaux et les outils de conception électronique.
+                        Parallèlement, mes compétences de développeur fullstack me permettent de donner vie aux
+                        interfaces de contrôle de ces dispositifs physiques.
+                    </p>
+                    <div class="profile-highlights">
+                        <div class="highlight-item">
+                            <i class="fa-solid fa-microchip"></i>
+                            <span>Systèmes Embarqués & IoT</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fa-solid fa-brain"></i>
+                            <span>Intelligence Artificielle & IA Agentique</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fa-solid fa-code"></i>
+                            <span>React & Django REST Framework</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills-section">
+            <h2 class="section-title" data-text="Compétences">Compétences</h2>
+
+            <div class="skills-container">
+                <!-- Skill Category: Web Dev -->
+                <div class="skill-category-card">
+                    <div class="category-header">
+                        <i class="fa-solid fa-laptop-code"></i>
+                        <h3>Développement Web</h3>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>React JS</span>
+                                <span>Avancé</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Django & Python</span>
+                                <span>Avancé</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>JavaScript</span>
+                                <span>Intermédiaire</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 88%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>HTML5 / CSS3 (Modern)</span>
+                                <span>Expert</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Bases de données (SQL, PostgreSQL)</span>
+                                <span>Intermédiaire</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Category: Engineering & Electronics -->
+                <div class="skill-category-card">
+                    <div class="category-header">
+                        <i class="fa-solid fa-microchip"></i>
+                        <h3>Génie Électrique & Matériel</h3>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Microcontrôleurs (Arduino, ESP32, Raspberry Pi)</span>
+                                <span>Avancé</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 87%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Capteurs & Actionneurs (US, Temp., Humidité...)</span>
+                                <span>Avancé</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Communication sans fil (Bluetooth, LoRa, RF 433MHz)</span>
+                                <span>Intermédiaire</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 72%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Afficheurs (LCD, OLED, TFT)</span>
+                                <span>Avancé</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 82%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Moteurs (Pas-à-pas, Servo, DC Brushless)</span>
+                                <span>Intermédiaire</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Équipements de Lab (Oscillo, Multimètre, Alim.)</span>
+                                <span>Avancé</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Category: Maker & Lab -->
+                <div class="skill-category-card">
+                    <div class="category-header">
+                        <i class="fa-solid fa-compass-drafting"></i>
+                        <h3>Fabrication & Making</h3>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Impression 3D FDM (châssis, pièces mécaniques)</span>
+                                <span>Avancé</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Découpe Laser & Gravure laser</span>
+                                <span>Avancé</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 72%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>CNC de fraisage/usinage</span>
+                                <span>Intermédiaire</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 68%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Conception 2D(Inkscape)</span>
+                                <span>Intermédiaire</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>CAO 3D (Tinkercad, SolidWorks)</span>
+                                <span>Intermédiaire</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 74%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Schémas de circuits (Cirkit Design, Fritzing)</span>
+                                <span>Avancé</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 83%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Soudure & Assemblage électronique (Station BGA)</span>
+                                <span>Avancé</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education & Experience Section -->
+        <section id="experience" class="experience-section">
+            <h2 class="section-title" data-text="Parcours & Expériences">Parcours & Expériences</h2>
+            <div class="experience-container">
+                <!-- Education Column -->
+                <div class="exp-column">
+                    <div class="column-header">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <h3>Éducation</h3>
+                    </div>
+                    <div class="exp-timeline">
+                        <div class="timeline-item">
+                            <span class="timeline-date">En cours | Fin en Juil. 2026</span>
+                            <h4>Licence en Sciences de l'ingénieur</h4>
+                            <p class="timeline-sub">Génie Électrique et Informatique, Faculté Polytechnique</p>
+                            <p class="timeline-institution">Université de Kinshasa</p>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-date">Oct. 2020</span>
+                            <h4>Diplôme d’État (Option Math-Physique)</h4>
+                            <p class="timeline-sub">Diplôme de fin d'études secondaires | Pourcentage: 82%</p>
+                            <p class="timeline-institution">Collège Notre Dame du Congo</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Column -->
+                <div class="exp-column">
+                    <div class="column-header">
+                        <i class="fa-solid fa-briefcase"></i>
+                        <h3>Expériences</h3>
+                    </div>
+                    <div class="exp-timeline">
+                        <div class="timeline-item">
+                            <span class="timeline-date">Déc 2024 – Août 2025</span>
+                            <h4>Stage IngenieuxSud</h4>
+                            <p class="timeline-sub">Projet étudiant de service learning à ENABEL-Gemena</p>
+                            <p class="timeline-desc">Conception et Réalisation d’un dispositif de conservation des
+                                produits agricoles adapté aux petites exploitations agricoles familiales (groupe de 8
+                                étudiants de l’UNIKIN et UCLouvain).</p>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-date">Oct. 2024 – Oct. 2025</span>
+                            <h4>Co-organisateur</h4>
+                            <p class="timeline-sub">Zindi DRC | Université de Kinshasa</p>
+                            <p class="timeline-desc">Promotion de la Data Science et organisation de compétitions de
+                                machine learning au niveau local.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certifications subsection -->
+            <div class="certifications-wrapper">
+                <h3 class="certs-title"><i class="fa-solid fa-certificate"></i> Certifications & Formations</h3>
+                <div class="certs-grid">
+                    <div class="cert-item-card">
+                        <h4>AWS AI Practitioner Challenge</h4>
+                        <span class="cert-org">Udacity | 20 juin 2026</span>
+                        <p>Développement des compétences en IA et en IA agentique cloud AWS.</p>
+                    </div>
+                    <div class="cert-item-card">
+                        <h4>Introduction to Python</h4>
+                        <span class="cert-org">Datacamp | 30 août 2025</span>
+                        <p>Bases de Python, introduction au parcours IA & data science.</p>
+                    </div>
+                    <div class="cert-item-card">
+                        <h4>Responsive Web Design</h4>
+                        <span class="cert-org">FreeCodeCamp | 10 déc. 2024</span>
+                        <p>Bases du développement web responsive avec projets pratiques.</p>
+                    </div>
+                    <div class="cert-item-card">
+                        <h4>Google Cloud Essentials</h4>
+                        <span class="cert-org">Google Cloud Skills Boost</span>
+                        <p>Apprentissage cloud computing grâce au GDG-Kinshasa.</p>
+                    </div>
+                    <div class="cert-item-card">
+                        <h4>Matlab Onramp</h4>
+                        <span class="cert-org">MathWorks</span>
+                        <p>Bases et manipulation de Matlab sur le site officiel.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Lab Section -->
+        <section id="lab" class="lab-section">
+            <h2 class="section-title" data-text="Le Lab Interactif">Le Lab Interactif</h2>
+            <p class="section-subtitle">Interagissez avec le matériel et le code directement dans votre navigateur.</p>
+
+            <div class="lab-grid">
+                <!-- Interactive Electronics Schematic -->
+                <div class="lab-card circuit-card">
+                    <div class="lab-card-header">
+                        <i class="fa-solid fa-bolt"></i>
+                        <span>SIMULATEUR DE CIRCUIT IMPRIMÉ (PCB)</span>
+                    </div>
+                    <div class="circuit-area">
+                        <!-- SVG Electronic Circuit Layout -->
+                        <svg class="pcb-svg" viewBox="0 0 400 300">
+                            <!-- Circuit Tracks -->
+                            <path d="M 50 150 L 150 150" class="track power-track" />
+                            <path d="M 210 150 L 250 150" class="track signal-track" id="track-to-resistor" />
+                            <path d="M 290 150 L 330 150 L 330 220 L 50 220 L 50 150" class="track ground-track" />
+
+                            <!-- Electrons flow animation containers (animated in JS) -->
+                            <g id="electron-flow"></g>
+
+                            <!-- Battery/Power Source -->
+                            <g class="component battery" transform="translate(50, 150)">
+                                <circle r="15" class="comp-body" />
+                                <text class="comp-label" y="30" text-anchor="middle">5V VCC</text>
+                                <text class="comp-symbol" y="5" x="-5" text-anchor="middle">+</text>
+                            </g>
+
+                            <!-- Interactive Toggle Switch -->
+                            <g class="component switch-comp" id="pcb-switch" transform="translate(180, 150)">
+                                <circle cx="-30" cy="0" r="4" class="switch-terminal" />
+                                <circle cx="30" cy="0" r="4" class="switch-terminal" />
+                                <line id="switch-lever" x1="-30" y1="0" x2="20" y2="-20" class="lever-line" />
+                                <text class="comp-label" y="30" text-anchor="middle">SWITCH_01</text>
+                            </g>
+
+                            <!-- Resistor -->
+                            <g class="component resistor" transform="translate(270, 150)">
+                                <rect x="-20" y="-8" width="40" height="16" class="comp-body" />
+                                <line x1="-12" y1="-8" x2="-12" y2="8" class="resistor-stripe stripe-gold" />
+                                <line x1="-4" y1="-8" x2="-4" y2="8" class="resistor-stripe stripe-red" />
+                                <line x1="4" y1="-8" x2="4" y2="8" class="resistor-stripe stripe-red" />
+                                <text class="comp-label" y="30" text-anchor="middle">220 Ω</text>
+                            </g>
+
+                            <!-- LED -->
+                            <g class="component led" transform="translate(330, 220)">
+                                <path d="M -12 -10 L 12 -10 L 0 10 Z" class="comp-body led-triangle" />
+                                <line x1="-12" y1="10" x2="12" y2="10" class="led-plate" />
+                                <circle r="2" cx="0" cy="0" class="led-core" id="led-light-source" />
+                                <text class="comp-label" x="40" y="5" text-anchor="start">LED_GREEN</text>
+                            </g>
+                        </svg>
+
+                        <div class="circuit-controls">
+                            <span class="info-tag">Cliquez sur SWITCH_01 pour alimenter le circuit !</span>
+                            <div class="status-display" id="circuit-status">
+                                ALIMENTATION : <span class="status-off">HORS TENSION</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Dev Terminal -->
+                <div class="lab-card terminal-card">
+                    <div class="lab-card-header">
+                        <i class="fa-solid fa-terminal"></i>
+                        <span>CONSOLE INTERACTIVE : dev@didier-ambunga:~</span>
+                    </div>
+                    <div class="terminal-body" id="terminal-screen">
+                        <div class="terminal-output">
+                            <p class="term-cyan">didier-system-console v1.0.0</p>
+                            <p class="term-gray">Tapez <span class="term-green">help</span> pour afficher la liste des
+                                commandes disponibles.</p>
+                        </div>
+                        <div class="terminal-input-line">
+                            <span class="term-prompt">didier@gei:~$</span>
+                            <input type="text" id="terminal-input" autocomplete="off" autofocus>
+                        </div>
+                    </div>
+                    <div class="terminal-shortcuts">
+                        <button class="shortcut-btn" data-cmd="help">help</button>
+                        <button class="shortcut-btn" data-cmd="skills">skills</button>
+                        <button class="shortcut-btn" data-cmd="projects">projects</button>
+                        <button class="shortcut-btn" data-cmd="clear">clear</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects-section">
+            <h2 class="section-title" data-text="Mes Projets">Mes Projets</h2>
+
+            <!-- Project Filter Controls -->
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">Tout</button>
+                <button class="filter-btn" data-filter="web">Web (React / Django)</button>
+                <button class="filter-btn" data-filter="hardware">Génie Électrique & IoT</button>
+                <button class="filter-btn" data-filter="maker">Impression 3D & Prototypage</button>
+                <button class="filter-btn" data-filter="robotique">Robotique</button>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1: DevMate AI App -->
+                <div class="project-card" data-category="web">
+                    <div class="project-img-placeholder"
+                        style="background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-tag">Web & Intelligence Artificielle</span>
+                        <h3>DevMate | AI Engineering App</h3>
+                        <p class="project-desc">Développement d’un compagnon de développement web utilisant l’IA pour
+                            assister les développeurs au quotidien.</p>
+                        <div class="project-skills-used">
+                            <span>Gemini API</span>
+                            <span>LangChain</span>
+                            <span>Streamlit</span>
+                            <span>Python</span>
+                        </div>
+                        <button class="btn-project-details" data-project-id="1">Détails <i
+                                class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Project 2: Flood Warning System IoT -->
+                <div class="project-card" data-category="hardware">
+                    <div class="project-img-placeholder"
+                        style="background: linear-gradient(135deg, #3b82f6 0%, #00f2fe 100%);">
+                        <i class="fa-solid fa-droplet"></i>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-tag">Systèmes Embarqués & IoT</span>
+                        <h3>Système d’Alerte Inondation (En cours)</h3>
+                        <p class="project-desc">Conception et implémentation d’un système intelligent de détection et
+                            d’alerte en temps réel pour la prévention des inondations.</p>
+                        <div class="project-skills-used">
+                            <span>Arduino</span>
+                            <span>Raspberry Pi</span>
+                            <span>Capteurs</span>
+                            <span>Matériel</span>
+                        </div>
+                        <button class="btn-project-details" data-project-id="2">Détails <i
+                                class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Project 3: Library Management Web App -->
+                <div class="project-card" data-category="web">
+                    <div class="project-img-placeholder"
+                        style="background: linear-gradient(135deg, #10b981 0%, #00f2fe 100%);">
+                        <i class="fa-solid fa-book"></i>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-tag">Développement Web (Backend)</span>
+                        <h3>Gestion de Bibliothèque Web App (En cours)</h3>
+                        <p class="project-desc">Développement d’une application complète pour la gestion des abonnements
+                            et des livres de la bibliothèque de ma faculté.</p>
+                        <div class="project-skills-used">
+                            <span>Django</span>
+                            <span>Python</span>
+                            <span>PostgreSQL</span>
+                            <span>HTML/CSS</span>
+                        </div>
+                        <button class="btn-project-details" data-project-id="3">Détails <i
+                                class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Project 4: Agricultural Preservation Device -->
+                <div class="project-card" data-category="maker hardware">
+                    <div class="project-img-placeholder"
+                        style="background: linear-gradient(135deg, #f59e0b 0%, #ec4899 100%);">
+                        <i class="fa-solid fa-seedling"></i>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-tag">Making & R&D</span>
+                        <h3>Dispositif de Conservation Agricole</h3>
+                        <p class="project-desc">Projet IngenieuxSud à ENABEL-Gemena : Conception d'un dispositif de
+                            conservation de récoltes pour les exploitations familiales.</p>
+                        <div class="project-skills-used">
+                            <span>Prototypage</span>
+                            <span>CAO</span>
+                            <span>Gestion des projets</span>
+                        </div>
+                        <button class="btn-project-details" data-project-id="4">Détails <i
+                                class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Project 5: Humanoid Biped Robot -->
+                <div class="project-card" data-category="robotique maker">
+                    <div class="project-img-placeholder"
+                        style="background: linear-gradient(135deg, #a855f7 0%, #06b6d4 100%);">
+                        <i class="fa-solid fa-person-walking"></i>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-tag">Robotique & Fabrication</span>
+                        <h3>Robot Humanoïde Bipède</h3>
+                        <p class="project-desc">Conception et fabrication d'un robot humanoïde bipède avec un châssis
+                            entièrement imprimé en 3D. Contrôle multi-servo pour reproduire des mouvements humains.</p>
+                        <div class="project-skills-used">
+                            <span>Impression 3D</span>
+                            <span>SolidWorks</span>
+                            <span>Servo Motors</span>
+                            <span>Arduino</span>
+                        </div>
+                        <button class="btn-project-details" data-project-id="5">Détails <i
+                                class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <h2 class="section-title" data-text="Me Contacter">Me Contacter</h2>
+            <p class="section-subtitle">Intéressé par mon profil ? Collaborons ensemble ou discutons de vos projets.</p>
+
+            <div class="contact-container">
+                <form id="contact-form" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Votre Nom</label>
+                        <input type="text" id="name" name="name" required placeholder="Ex. Jean Dupont">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Votre Email</label>
+                        <input type="email" id="email" name="email" required placeholder="Ex. jean.dupont@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required
+                            placeholder="Discutons de votre opportunité..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-submit">
+                        <span>Envoyer le Message</span>
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                    <div id="form-feedback" class="form-feedback"></div>
+                </form>
+
+                <div class="contact-info-panel">
+                    <h3>Canaux de communication</h3>
+                    <div class="info-link-group">
+                        <a href="mailto:ambungadidier21@gmail.com" class="info-link">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>ambungadidier21@gmail.com</span>
+                        </a>
+                        <a href="tel:+243810712454" class="info-link">
+                            <i class="fa-solid fa-phone"></i>
+                            <span>+243 810 712 454</span>
+                        </a>
+                        <div class="info-link">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>Kinshasa, RDC / À distance</span>
+                        </div>
+                        <div class="info-link">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <span>Faculté Polytechnique - Université de Kinshasa</span>
+                        </div>
+                    </div>
+
+                    <div class="social-networks">
+                        <a href="https://github.com/DidierAmbungaJr" target="_blank" aria-label="GitHub"><i
+                                class="fa-brands fa-github"></i></a>
+                        <a href="https://linkedin.com/in/didier-ambunga" target="_blank" aria-label="LinkedIn"><i
+                                class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://x.com/DidierAmbungajr" target="_blank" aria-label="Twitter"><i
+                                class="fa-brands fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Project Details Modal -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modal-project-details">
+                <!-- Dynamic Content Loaded in JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <p>&copy; 2026 Didier Ambunga. Tous droits réservés.</p>
+        <p class="footer-tagline">Conçu avec passion par un Électricien & Développeur</p>
+    </footer>
+
+    <!-- Custom Script -->
+    <script src="app.js"></script>
+</body>
+
+</html>
