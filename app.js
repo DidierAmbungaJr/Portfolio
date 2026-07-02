@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // ==========================================
     // 1. MOBILE NAVIGATION MENU
     // ==========================================
     const mobileToggle = document.querySelector('.mobile-nav-toggle');
     const navMenu = document.querySelector('.nav-menu');
-    
+
     if (mobileToggle && navMenu) {
         mobileToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 icon.className = 'fa-solid fa-bars';
             }
         });
-        
+
         // Close menu on link click
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
@@ -31,18 +31,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     const canvas = document.getElementById('bg-canvas');
     const ctx = canvas.getContext('2d');
-    
+
     let width = canvas.width = window.innerWidth;
     let height = canvas.height = window.innerHeight;
-    
+
     window.addEventListener('resize', () => {
         width = canvas.width = window.innerWidth;
         height = canvas.height = window.innerHeight;
     });
-    
+
     const particles = [];
     const maxParticles = 60;
-    
+
     class Particle {
         constructor() {
             this.x = Math.random() * width;
@@ -51,15 +51,15 @@ document.addEventListener('DOMContentLoaded', () => {
             this.vy = (Math.random() - 0.5) * 0.5;
             this.radius = Math.random() * 2 + 1;
         }
-        
+
         update() {
             this.x += this.vx;
             this.y += this.vy;
-            
+
             if (this.x < 0 || this.x > width) this.vx = -this.vx;
             if (this.y < 0 || this.y > height) this.vy = -this.vy;
         }
-        
+
         draw() {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
@@ -67,24 +67,24 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.fill();
         }
     }
-    
+
     for (let i = 0; i < maxParticles; i++) {
         particles.push(new Particle());
     }
-    
+
     function animateCanvas() {
         ctx.clearRect(0, 0, width, height);
-        
+
         // Draw connections
         for (let i = 0; i < particles.length; i++) {
             particles[i].update();
             particles[i].draw();
-            
+
             for (let j = i + 1; j < particles.length; j++) {
                 const dx = particles[i].x - particles[j].x;
                 const dy = particles[i].y - particles[j].y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
-                
+
                 if (dist < 120) {
                     ctx.beginPath();
                     ctx.moveTo(particles[i].x, particles[i].y);
@@ -104,18 +104,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     const typedTextElement = document.getElementById('typed-text');
     const words = [
-        "Développeur React & Django",
-        "Étudiant L3 Génie Électrique & Informatique",
+        "Développeur Full Stack",
+        "Élève Ingénieur électronicien",
         "Passionné d'IoT, de Prototypage & de Making"
     ];
     let wordIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
     let typingSpeed = 70;
-    
+
     function typeEffect() {
         const currentWord = words[wordIndex];
-        
+
         if (isDeleting) {
             typedTextElement.textContent = currentWord.substring(0, charIndex - 1);
             charIndex--;
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
             charIndex++;
             typingSpeed = 70;
         }
-        
+
         if (!isDeleting && charIndex === currentWord.length) {
             isDeleting = true;
             typingSpeed = 2000; // Delay before starting to delete
@@ -134,10 +134,10 @@ document.addEventListener('DOMContentLoaded', () => {
             wordIndex = (wordIndex + 1) % words.length;
             typingSpeed = 500; // Delay before starting to type next word
         }
-        
+
         setTimeout(typeEffect, typingSpeed);
     }
-    
+
     if (typedTextElement) {
         typeEffect();
     }
@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const terminalScreen = document.getElementById('terminal-screen');
     const terminalOutput = document.querySelector('.terminal-output');
     const shortcutButtons = document.querySelectorAll('.shortcut-btn');
-    
+
     const commands = {
         help: () => `Commandes disponibles :<br>
   - <span class="term-cyan">whoami</span>   : Présentation générale de Didier<br>
@@ -158,73 +158,73 @@ document.addEventListener('DOMContentLoaded', () => {
   - <span class="term-cyan">circuit</span>  : État du simulateur matériel<br>
   - <span class="term-cyan">contact</span>  : Coordonnées de contact<br>
   - <span class="term-cyan">clear</span>    : Efface l'écran de la console`,
-        
+
         whoami: () => `Nom: <span class="term-green">Didier Ambunga</span><br>
 Statut: Étudiant en L3 Sciences de l'Ingénieur (Génie Électrique & Informatique), Université de Kinshasa.<br>
 Spécialités: Systèmes Embarqués, IoT, et Développement Web (React & Django).<br>
 Philosophie: Concevoir des solutions physiques et logicielles innovantes pour répondre à des défis sociétaux majeurs.`,
-        
+
         skills: () => `<span class="term-amber">--- PROGRAMMATION & IA ---</span><br>
 Python (Django, Streamlit), JavaScript (React), HTML/CSS, Tailwind CSS, LangChain, Matlab.<br><br>
 <span class="term-amber">--- MATÉRIEL & EMBARQUÉ ---</span><br>
 Arduino, Raspberry Pi, CAO de circuits (Fritzing), Systèmes de conservation et capteurs physiques.<br><br>
 <span class="term-amber">--- LOGICIELS & OUTILS ---</span><br>
 LaTeX (Maîtrise avancée), VS Code, Jupyter, Trello (Gestion de projet), Git/GitHub, Linux (Ubuntu 24.04).`,
-        
+
         projects: () => `Projets clés (Saisir ou cliquer pour plus d'infos):<br>
 1. <span class="term-cyan">DevMate AI App</span> : Compagnon IA sous Streamlit + Gemini API.<br>
 2. <span class="term-cyan">Alerte Inondation</span> : Système d'alerte IoT en temps réel (Arduino/Raspberry Pi).<br>
 3. <span class="term-cyan">Gestion Bibliothèque</span> : Web App backend sous Django pour la faculté.<br>
 4. <span class="term-cyan">Conservation Agricole</span> : Projet humanitaire et technique ENABEL-Gemena.<br>
 5. <span class="term-cyan">Robot Humanoïde</span> : Bipède imprimé en 3D (SolidWorks + Servos + Arduino).`,
-        
+
         circuit: () => {
             const isClosed = document.querySelector('.circuit-card').classList.contains('circuit-active');
-            return isClosed 
+            return isClosed
                 ? `État du PCB: <span class="term-green">ALIMENTÉ (SWITCH_01: FERMÉ)</span><br>LED active. Alimentation 5V VCC OK. Signaux stables.`
                 : `État du PCB: <span class="term-gray">HORS TENSION (SWITCH_01: OUVERT)</span><br>Veuillez fermer le commutateur SWITCH_01 sur le simulateur à gauche pour démarrer.`;
         },
-        
+
         contact: () => `Pour me contacter :<br>
 - Email: <span class="term-cyan">ambungadidier21@gmail.com</span><br>
 - Téléphone: <span class="term-cyan">+243 810 712 454</span><br>
 - GitHub / LinkedIn: Liens disponibles dans la section contact et pied de page.<br>
 Vous pouvez également utiliser le formulaire de contact en bas de page !`
     };
-    
+
     function writeToTerminal(input, outputText) {
         if (!terminalOutput) return;
-        
+
         const userLine = document.createElement('div');
         userLine.className = 'terminal-input-line';
         userLine.innerHTML = `<span class="term-prompt">didier@gei:~$</span> <span class="term-gray">${input}</span>`;
         terminalOutput.appendChild(userLine);
-        
+
         if (outputText) {
             const resultLine = document.createElement('div');
             resultLine.className = 'terminal-output';
             resultLine.innerHTML = `<p>${outputText}</p>`;
             terminalOutput.appendChild(resultLine);
         }
-        
+
         if (terminalScreen) {
             terminalScreen.scrollTop = terminalScreen.scrollHeight;
         }
     }
-    
+
     if (terminalInput) {
         terminalInput.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') {
                 const value = terminalInput.value.trim().toLowerCase();
                 terminalInput.value = '';
-                
+
                 if (value === '') return;
-                
+
                 if (value === 'clear') {
                     if (terminalOutput) terminalOutput.innerHTML = '';
                     return;
                 }
-                
+
                 if (commands[value]) {
                     writeToTerminal(value, commands[value]());
                 } else {
@@ -232,7 +232,7 @@ Vous pouvez également utiliser le formulaire de contact en bas de page !`
                 }
             }
         });
-        
+
         // Focus terminal input when clicking terminal screen
         if (terminalScreen) {
             terminalScreen.addEventListener('click', () => {
@@ -240,7 +240,7 @@ Vous pouvez également utiliser le formulaire de contact en bas de page !`
             });
         }
     }
-    
+
     // Shortcuts
     shortcutButtons.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -260,16 +260,16 @@ Vous pouvez également utiliser le formulaire de contact en bas de page !`
     const switchLever = document.getElementById('switch-lever');
     const circuitCard = document.querySelector('.circuit-card');
     const circuitStatusText = document.getElementById('circuit-status');
-    
+
     let circuitOn = false;
-    
+
     if (pcbSwitch && switchLever) {
         pcbSwitch.addEventListener('click', toggleCircuit);
     }
-    
+
     function toggleCircuit() {
         circuitOn = !circuitOn;
-        
+
         if (circuitOn) {
             // Anim switch closed
             switchLever.style.transform = 'rotate(25deg)'; // Closed representation
@@ -277,7 +277,7 @@ Vous pouvez également utiliser le formulaire de contact en bas de page !`
             if (circuitStatusText) {
                 circuitStatusText.innerHTML = `ALIMENTATION : <span class="status-on">SOUS TENSION (5V) | SUCCÈS</span>`;
             }
-            
+
             // Send terminal trigger notification
             writeToTerminal('system_check', `<span class="term-green">[SYS_MSG] Alimentation détectée sur SWITCH_01 !</span><br>
 Courant circulant dans le circuit de recrutement. Signal LED actif. Didier Ambunga est hautement qualifié pour votre équipe !`);
@@ -296,14 +296,14 @@ Courant circulant dans le circuit de recrutement. Signal LED actif. Didier Ambun
     // ==========================================
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
-    
+
     filterButtons.forEach(btn => {
         btn.addEventListener('click', () => {
             filterButtons.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            
+
             const filterValue = btn.getAttribute('data-filter');
-            
+
             projectCards.forEach(card => {
                 const categories = card.getAttribute('data-category').split(' ');
                 if (filterValue === 'all' || categories.includes(filterValue)) {
@@ -321,7 +321,7 @@ Courant circulant dans le circuit de recrutement. Signal LED actif. Didier Ambun
     const modal = document.getElementById('project-modal');
     const modalContent = document.getElementById('modal-project-details');
     const closeModal = document.querySelector('.close-modal');
-    
+
     const projectsData = {
         '1': {
             title: "DevMate | AI Engineering App",
@@ -394,12 +394,12 @@ Courant circulant dans le circuit de recrutement. Signal LED actif. Didier Ambun
             `
         }
     };
-    
+
     document.querySelectorAll('.btn-project-details').forEach(btn => {
         btn.addEventListener('click', () => {
             const id = btn.getAttribute('data-project-id');
             const data = projectsData[id];
-            
+
             if (data && modal && modalContent) {
                 modalContent.innerHTML = `
                     <div class="modal-proj-detail">
@@ -418,14 +418,14 @@ Courant circulant dans le circuit de recrutement. Signal LED actif. Didier Ambun
             }
         });
     });
-    
+
     if (closeModal) {
         closeModal.addEventListener('click', () => {
             modal.style.display = 'none';
             document.body.style.overflow = 'auto';
         });
     }
-    
+
     window.addEventListener('click', (e) => {
         if (e.target === modal) {
             modal.style.display = 'none';
@@ -438,33 +438,33 @@ Courant circulant dans le circuit de recrutement. Signal LED actif. Didier Ambun
     // ==========================================
     const contactForm = document.getElementById('contact-form');
     const formFeedback = document.getElementById('form-feedback');
-    
+
     if (contactForm && formFeedback) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            
+
             const submitBtn = contactForm.querySelector('.btn-submit');
             const submitText = submitBtn.querySelector('span');
             const submitIcon = submitBtn.querySelector('i');
-            
+
             // Loading State
             submitText.textContent = "Transmission en cours...";
             submitIcon.className = "fa-solid fa-spinner fa-spin";
             submitBtn.style.pointerEvents = "none";
-            
+
             // Simulating API send
             setTimeout(() => {
                 formFeedback.textContent = "✓ Message envoyé avec succès ! Didier vous répondra rapidement.";
                 formFeedback.className = "form-feedback success";
-                
+
                 // Clear Form
                 contactForm.reset();
-                
+
                 // Reset Button
                 submitText.textContent = "Envoyer le Message";
                 submitIcon.className = "fa-solid fa-paper-plane";
                 submitBtn.style.pointerEvents = "auto";
-                
+
                 // Print in terminal console
                 writeToTerminal('incoming_message', `<span class="term-green">[FORM] Nouveau message reçu !</span><br>
 Merci pour votre intérêt. Une réponse automatique a été configurée.`);
@@ -477,19 +477,19 @@ Merci pour votre intérêt. Une réponse automatique a été configurée.`);
     // ==========================================
     const reveals = document.querySelectorAll('section');
     reveals.forEach(r => r.classList.add('reveal'));
-    
+
     function revealOnScroll() {
         const windowHeight = window.innerHeight;
         reveals.forEach(rev => {
             const elementTop = rev.getBoundingClientRect().top;
             const elementVisible = 100;
-            
+
             if (elementTop < windowHeight - elementVisible) {
                 rev.classList.add('active');
             }
         });
     }
-    
+
     window.addEventListener('scroll', revealOnScroll);
     revealOnScroll(); // Trigger once on load
 });
