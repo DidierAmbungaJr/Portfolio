@@ -472,6 +472,8 @@ Courant circulant dans le circuit de recrutement. Signal LED actif. Didier Ambun
     const formFeedback = document.getElementById('form-feedback');
 
     if (contactForm && formFeedback) {
+        const WHATSAPP_NUMBER = '243810712454';
+
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
@@ -479,35 +481,30 @@ Courant circulant dans le circuit de recrutement. Signal LED actif. Didier Ambun
             const submitText = submitBtn ? submitBtn.querySelector('span') : null;
             const submitIcon = submitBtn ? submitBtn.querySelector('i') : null;
 
-            if (submitText) {
-                submitText.textContent = "Transmission en cours...";
-            }
-            if (submitIcon) {
-                submitIcon.className = "fa-solid fa-spinner fa-spin";
-            }
-            if (submitBtn) {
-                submitBtn.style.pointerEvents = "none";
-            }
+            if (submitText) submitText.textContent = "Préparation du message...";
+            if (submitIcon) submitIcon.className = "fa-solid fa-spinner fa-spin";
+            if (submitBtn) submitBtn.style.pointerEvents = "none";
 
-            setTimeout(() => {
-                formFeedback.textContent = "✓ Message envoyé avec succès ! Didier vous répondra rapidement.";
+            const name = contactForm.querySelector('#name') ? contactForm.querySelector('#name').value.trim() : '';
+            const message = contactForm.querySelector('#message') ? contactForm.querySelector('#message').value.trim() : '';
+            const body = `Bonjour Didier,%0A%0AMon nom est ${encodeURIComponent(name)}.%0A%0AMessage : %0A${encodeURIComponent(message)}`;
+            const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${body}`;
+
+            try {
+                window.open(waUrl, '_blank');
+                formFeedback.textContent = "✓ Ouverture de WhatsApp pour envoyer votre message.";
                 formFeedback.className = "form-feedback success";
-
                 contactForm.reset();
-
-                if (submitText) {
-                    submitText.textContent = "Envoyer le Message";
-                }
-                if (submitIcon) {
-                    submitIcon.className = "fa-solid fa-paper-plane";
-                }
-                if (submitBtn) {
-                    submitBtn.style.pointerEvents = "auto";
-                }
-
-                writeToTerminal('incoming_message', `<span class="term-green">[FORM] Nouveau message reçu !</span><br>
-Merci pour votre intérêt. Une réponse automatique a été configurée.`);
-            }, 1500);
+                writeToTerminal('incoming_message', `<span class="term-green">[FORM] Redirection vers WhatsApp.</span><br>Vérifiez votre application WhatsApp ou WhatsApp Web.`);
+            } catch (err) {
+                formFeedback.textContent = "Erreur lors de l'ouverture de WhatsApp. Vérifiez votre navigateur et essayez de nouveau.";
+                formFeedback.className = 'form-feedback error';
+                writeToTerminal('incoming_message', `<span class="term-amber">[FORM_ERR]</span> ${err.message}`);
+            } finally {
+                if (submitText) submitText.textContent = "Envoyer le Message";
+                if (submitIcon) submitIcon.className = "fa-solid fa-paper-plane";
+                if (submitBtn) submitBtn.style.pointerEvents = "auto";
+            }
         });
     }
 
