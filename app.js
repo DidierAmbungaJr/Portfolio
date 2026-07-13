@@ -5,23 +5,25 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     const mobileToggle = document.querySelector('.mobile-nav-toggle');
     const navMenu = document.querySelector('.nav-menu');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (mobileToggle && navMenu) {
+        mobileToggle.setAttribute('aria-expanded', 'false');
+
         mobileToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
+            const isActive = navMenu.classList.toggle('active');
             const icon = mobileToggle.querySelector('i');
-            if (navMenu.classList.contains('active')) {
-                icon.className = 'fa-solid fa-xmark';
-            } else {
-                icon.className = 'fa-solid fa-bars';
-            }
+            mobileToggle.setAttribute('aria-expanded', String(isActive));
+            icon.className = isActive ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
         });
 
         // Close menu on link click
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
-                mobileToggle.querySelector('i').className = 'fa-solid fa-bars';
+                mobileToggle.setAttribute('aria-expanded', 'false');
+                const icon = mobileToggle.querySelector('i');
+                if (icon) icon.className = 'fa-solid fa-bars';
             });
         });
     }
@@ -35,13 +37,18 @@ document.addEventListener('DOMContentLoaded', () => {
     let width = canvas.width = window.innerWidth;
     let height = canvas.height = window.innerHeight;
 
-    window.addEventListener('resize', () => {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-    });
-
     const particles = [];
     const maxParticles = 60;
+
+    function resizeCanvas() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+        if (prefersReducedMotion) {
+            drawStaticParticles();
+        }
+    }
+
+    window.addEventListener('resize', resizeCanvas);
 
     class Particle {
         constructor() {
@@ -63,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
         draw() {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(0, 242, 254, 0.4)';
+            ctx.fillStyle = 'rgba(0, 212, 245, 0.24)';
             ctx.fill();
         }
     }
@@ -72,10 +79,14 @@ document.addEventListener('DOMContentLoaded', () => {
         particles.push(new Particle());
     }
 
+    function drawStaticParticles() {
+        ctx.clearRect(0, 0, width, height);
+        particles.forEach(p => p.draw());
+    }
+
     function animateCanvas() {
         ctx.clearRect(0, 0, width, height);
 
-        // Draw connections
         for (let i = 0; i < particles.length; i++) {
             particles[i].update();
             particles[i].draw();
@@ -89,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ctx.beginPath();
                     ctx.moveTo(particles[i].x, particles[i].y);
                     ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.strokeStyle = `rgba(0, 130, 255, ${0.15 * (1 - dist / 120)})`;
+                    ctx.strokeStyle = `rgba(0, 130, 255, ${0.12 * (1 - dist / 120)})`;
                     ctx.lineWidth = 1;
                     ctx.stroke();
                 }
@@ -97,12 +108,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         requestAnimationFrame(animateCanvas);
     }
-    animateCanvas();
+
+    if (prefersReducedMotion) {
+        drawStaticParticles();
+    } else {
+        animateCanvas();
+    }
 
     // ==========================================
     // 3. EFFET D'ÉCRITURE DYNAMIQUE (TYPING EFFECT)
     // ==========================================
     const typedTextElement = document.getElementById('typed-text');
+    if (typedTextElement) {
+        typedTextElement.setAttribute('aria-live', 'polite');
+    }
     const words = [
         "Développeur Full Stack",
         "Élève Ingénieur électronicien",
@@ -114,6 +133,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let typingSpeed = 70;
 
     function typeEffect() {
+        if (!typedTextElement) return;
+
         const currentWord = words[wordIndex];
 
         if (isDeleting) {
@@ -128,18 +149,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!isDeleting && charIndex === currentWord.length) {
             isDeleting = true;
-            typingSpeed = 2000; // Delay before starting to delete
+            typingSpeed = 2000;
         } else if (isDeleting && charIndex === 0) {
             isDeleting = false;
             wordIndex = (wordIndex + 1) % words.length;
-            typingSpeed = 500; // Delay before starting to type next word
+            typingSpeed = 500;
         }
 
         setTimeout(typeEffect, typingSpeed);
     }
 
     if (typedTextElement) {
-        typeEffect();
+        if (prefersReducedMotion) {
+            typedTextElement.textContent = words[0];
+        } else {
+            typeEffect();
+        }
     }
 
     // ==========================================
@@ -202,7 +227,7 @@ Vous pouvez également utiliser le formulaire de contact en bas de page !`
 
         if (outputText) {
             const resultLine = document.createElement('div');
-            resultLine.className = 'terminal-output';
+            resultLine.className = 'terminal-response';
             resultLine.innerHTML = `<p>${outputText}</p>`;
             terminalOutput.appendChild(resultLine);
         }
@@ -433,6 +458,13 @@ Courant circulant dans le circuit de recrutement. Signal LED actif. Didier Ambun
         }
     });
 
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal && modal.style.display === 'flex') {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+
     // ==========================================
     // 8. CONTACT FORM SUBMISSION
     // ==========================================
@@ -444,28 +476,35 @@ Courant circulant dans le circuit de recrutement. Signal LED actif. Didier Ambun
             e.preventDefault();
 
             const submitBtn = contactForm.querySelector('.btn-submit');
-            const submitText = submitBtn.querySelector('span');
-            const submitIcon = submitBtn.querySelector('i');
+            const submitText = submitBtn ? submitBtn.querySelector('span') : null;
+            const submitIcon = submitBtn ? submitBtn.querySelector('i') : null;
 
-            // Loading State
-            submitText.textContent = "Transmission en cours...";
-            submitIcon.className = "fa-solid fa-spinner fa-spin";
-            submitBtn.style.pointerEvents = "none";
+            if (submitText) {
+                submitText.textContent = "Transmission en cours...";
+            }
+            if (submitIcon) {
+                submitIcon.className = "fa-solid fa-spinner fa-spin";
+            }
+            if (submitBtn) {
+                submitBtn.style.pointerEvents = "none";
+            }
 
-            // Simulating API send
             setTimeout(() => {
                 formFeedback.textContent = "✓ Message envoyé avec succès ! Didier vous répondra rapidement.";
                 formFeedback.className = "form-feedback success";
 
-                // Clear Form
                 contactForm.reset();
 
-                // Reset Button
-                submitText.textContent = "Envoyer le Message";
-                submitIcon.className = "fa-solid fa-paper-plane";
-                submitBtn.style.pointerEvents = "auto";
+                if (submitText) {
+                    submitText.textContent = "Envoyer le Message";
+                }
+                if (submitIcon) {
+                    submitIcon.className = "fa-solid fa-paper-plane";
+                }
+                if (submitBtn) {
+                    submitBtn.style.pointerEvents = "auto";
+                }
 
-                // Print in terminal console
                 writeToTerminal('incoming_message', `<span class="term-green">[FORM] Nouveau message reçu !</span><br>
 Merci pour votre intérêt. Une réponse automatique a été configurée.`);
             }, 1500);

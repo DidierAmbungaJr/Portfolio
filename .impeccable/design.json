@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-13T00:00:00.000Z",
+  "title": "Design System: Didier Ambunga Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "background": {
+        "role": "background",
+        "displayName": "Midnight",
+        "canonical": "oklch(7.5% 0.03 250)",
+        "tonalRamp": ["#08090d", "#0d0f17", "#141823"]
+      },
+      "surface": {
+        "role": "surface",
+        "displayName": "Night Surface",
+        "canonical": "oklch(10% 0.04 250)",
+        "tonalRamp": ["#0d0f17", "#151b24", "#1b232f"]
+      },
+      "accent-cyan": {
+        "role": "primary",
+        "displayName": "Electric Cyan",
+        "canonical": "oklch(93% 0.32 190)",
+        "tonalRamp": ["#00f2fe", "#66fdff", "#acedff"]
+      },
+      "accent-purple": {
+        "role": "secondary",
+        "displayName": "Lab Purple",
+        "canonical": "oklch(67% 0.35 280)",
+        "tonalRamp": ["#8b5cf6", "#ad8cff", "#d3b7ff"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero and main page statements"
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings and major labels"
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Paragraph copy and descriptive text"
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Technical labels, status, and interface metadata"
+      }
+    },
+    "componentMeta": {
+      "button-primary": {
+        "role": "button",
+        "displayName": "Primary Button"
+      },
+      "button-secondary": {
+        "role": "button",
+        "displayName": "Secondary Button"
+      },
+      "card-surface": {
+        "role": "card",
+        "displayName": "Surface Card"
+      },
+      "input-field": {
+        "role": "input",
+        "displayName": "Input Field"
+      }
+    },
+    "notes": {
+      "northStar": "A technical portfolio that feels like a polished engineering lab with signal-driven color and a clear, high-contrast hierarchy.",
+      "rules": [
+        "Do not use gradient text over gradient backgrounds.",
+        "Do not pair two similar sans-serif families.",
+        "Keep cards flat at rest and only add depth on hover or active state."
+      ]
+    }
+  }
+}
