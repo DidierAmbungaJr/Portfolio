@@ -1,182 +1,113 @@
 ---
 name: "Didier Ambunga Portfolio"
-description: "A high-contrast engineering portfolio with a dark lab aesthetic and vivid signal accents."
+description: "A high-contrast engineering portfolio with a modern glassmorphism design, optical vibrancy and San Francisco (SF Pro) typography."
 colors:
-  background: "#08090d"
-  surface: "#0d0f17"
-  surface-card: "#0d0f17"
-  border: "#ffffff14"
+  background: "#07090e"
+  surface: "rgba(13, 17, 26, 0.62)"
+  surface-card: "rgba(13, 17, 26, 0.65)"
+  border: "rgba(255, 255, 255, 0.12)"
+  border-bright: "rgba(255, 255, 255, 0.24)"
   text-primary: "#f8fafc"
-  text-secondary: "#94a3b8"
-  text-muted: "#475569"
-  accent-cyan: "#00f2fe"
-  accent-purple: "#8b5cf6"
+  text-secondary: "#cbd5e1"
+  text-muted: "#7b8a9d"
+  accent-cyan: "#00d4f5"
+  accent-purple: "#7c49e5"
   accent-pink: "#ec4899"
-  accent-amber: "#f59e0b"
+  accent-amber: "#f5b942"
   accent-green: "#10b981"
 typography:
   display:
-    fontFamily: "Outfit, sans-serif"
-    fontSize: "clamp(3rem, 6vw, 5.6rem)"
+    fontFamily: '"SF Pro Display", "SF Pro Text", "SF Pro", -apple-system, BlinkMacSystemFont, "San Francisco", system-ui, sans-serif'
+    fontSize: "clamp(3.2rem, 7.5vw, 5.5rem)"
     fontWeight: 800
     lineHeight: 1.05
     letterSpacing: "-0.03em"
   headline:
-    fontFamily: "Outfit, sans-serif"
+    fontFamily: '"SF Pro Display", "SF Pro Text", "SF Pro", -apple-system, BlinkMacSystemFont, "San Francisco", system-ui, sans-serif'
     fontSize: "2.2rem"
     fontWeight: 700
     lineHeight: 1.2
     letterSpacing: "-0.02em"
   body:
-    fontFamily: "Outfit, sans-serif"
+    fontFamily: '"SF Pro Text", "SF Pro", -apple-system, BlinkMacSystemFont, "San Francisco", system-ui, sans-serif'
     fontSize: "1rem"
     fontWeight: 400
     lineHeight: 1.6
-    letterSpacing: "normal"
+    letterSpacing: "-0.01em"
   label:
-    fontFamily: "JetBrains Mono, monospace"
+    fontFamily: '"SF Mono", "JetBrains Mono", Menlo, Monaco, Consolas, monospace'
     fontSize: "0.85rem"
     fontWeight: 600
     lineHeight: 1.5
-    letterSpacing: "0.08em"
+    letterSpacing: "0.05em"
 rounded:
   sm: "8px"
-  md: "12px"
-  lg: "24px"
+  md: "14px"
+  lg: "20px"
+  xl: "24px"
   pill: "30px"
-spacing:
-  xs: "8px"
-  sm: "16px"
-  md: "24px"
-  lg: "32px"
-  xl: "48px"
+elevation:
+  glass-blur: "blur(20px) saturate(180%)"
+  glass-blur-heavy: "blur(32px) saturate(190%)"
+  glass-specular: "inset 0 1px 1px 0 rgba(255, 255, 255, 0.18), inset 0 0 0 1px rgba(255, 255, 255, 0.04)"
+  glass-shadow: "0 20px 45px -10px rgba(0, 0, 0, 0.5)"
 components:
   button-primary:
-    backgroundColor: "{colors.accent-cyan}"
-    textColor: "{colors.text-primary}"
+    backgroundColor: "linear-gradient(135deg, #00f2fe 0%, #00b4d8 100%)"
+    textColor: "#040914"
     rounded: "{rounded.pill}"
-    padding: "14px 32px"
+    padding: "0.95rem 2.2rem"
   button-secondary:
-    backgroundColor: "{colors.background}"
+    backgroundColor: "var(--glass-bg-subtle)"
     textColor: "{colors.text-primary}"
+    backdropFilter: "blur(16px) saturate(180%)"
     rounded: "{rounded.pill}"
-    padding: "14px 32px"
+    padding: "0.95rem 2.2rem"
   card-surface:
     backgroundColor: "{colors.surface}"
+    backdropFilter: "{elevation.glass-blur}"
     textColor: "{colors.text-primary}"
     rounded: "{rounded.lg}"
     padding: "24px"
-  input-field:
-    backgroundColor: "{colors.background}"
-    textColor: "{colors.text-primary}"
-    rounded: "{rounded.md}"
-    padding: "14px 16px"
 ---
 
 # Design System: Didier Ambunga Portfolio
 
 ## 1. Overview
 
-This system is built for a technical portfolio that reads like an engineering lab notebook with a confident, modern signal palette. It combines a grounded dark surface with bright cyan, violet, and amber accents to keep the visual voice distinctive without relying on generic glassmorphism or terminal clichés.
+Ce système allie l'ingénierie matérielle & logicielle de pointe à une interface **Glassmorphism moderne haute fidélité** et à la clarté typographique de **San Francisco (SF Pro)**.
 
-The site leans into polished structure: clear hierarchy, strong contrast, and a restrained glow-based energy that supports technical storytelling. The design avoids repetitive ornamental scaffolding like tiny uppercase section labels or hero-metric templates, and it keeps the experience focused on capability, craft, and real work.
+Loin d'un flou laiteux décoratif sans relief, le design utilise les lois de la physique optique : réfraction chromatique grâce aux lueurs d'arrière-plan (cyan & violet), saturation accrue (`saturate(180%)`), reflets spéculaires supérieurs (`inset 0 1px 1px rgba(255,255,255,0.18)`), et contours cristallins de 1px.
 
-**Key Characteristics:**
-- High contrast dark palette with vivid signal colors.
-- Clean, geometric type with a sharp display hierarchy.
-- Subtle surface lift and glow rather than heavy shadow or glass by default.
-- Purposeful component rhythm for cards, buttons, and interactive sections.
+**Caractéristiques Clés :**
+- **Typographie San Francisco (SF Pro)** : clarté chirurgicale, proportion humaniste et rendu natif Apple.
+- **Glassmorphism Optique** : `backdrop-filter: blur(...) saturate(...)` superposé à des halos d'ambiance dynamiques.
+- **Bordures & Reflets Spéculaires** : liserés de lumière supérieurs simulant l'épaisseur du verre poli.
+- **Signal & Contrastes Élevés** : fond noir spatial profond (#07090e) garantissant un ratio de contraste supérieur à 4.5:1 sur tous les textes.
 
-## 2. Colors
+## 2. Couleurs & Matériaux
 
-The palette is anchored in a deep night-lab surface, with electric accents that feel like active circuitry and system state.
+### Matériaux Verre (Glass Tokens)
+- **Glass Surface** (`rgba(13, 17, 26, 0.62)`): fond principal translucide des cartes et conteneurs.
+- **Glass Subtle** (`rgba(255, 255, 255, 0.035)`): surfaces discrètes, badges et filtres inactifs.
+- **Glass Border** (`rgba(255, 255, 255, 0.12)`): contour cristallin par défaut.
+- **Glass Border Bright** (`rgba(255, 255, 255, 0.24)`): survol et états actifs.
+- **Specular Highlight** (`inset 0 1px 1px 0 rgba(255, 255, 255, 0.18)`): reflet de lumière sur l'arête supérieure.
 
-### Primary
-- **Electric Cyan** (#00f2fe): the main call-to-action and highlight color, used for buttons, interactive links, badges, and active state accents.
+### Accents de Signal
+- **Cyan Électrique** (`#00d4f5` / `#00f2fe`): actions primaires, points de statut actifs, lueurs interactives.
+- **Violet Lab** (`#7c49e5` / `#8b5cf6`): halos d'ambiance, dégradés d'arrière-plan et transitions lumineuses.
+- **Vert Signal** (`#10b981`): état système en ligne, validation circuit imprimé.
 
-### Secondary
-- **Lab Purple** (#8b5cf6): a complementary accent for hero glow, interactive focus, and soft gradient transitions.
-- **Signal Pink** (#ec4899): a tertiary highlight used sparingly for emphasis and visual tension.
-- **Signal Amber** (#f59e0b): for status cues, badge accents, and contrast-rich labels.
-- **Signal Green** (#10b981): for positive status, active circuit state, and confirmation feedback.
+## 3. Typographie
 
-### Neutral
-- **Midnight** (#08090d): page background and deepest surface tone.
-- **Night Surface** (#0d0f17): cards, sections, and layered container surfaces.
-- **Paper White** (#f8fafc): primary text and key content.
-- **Soft Mist** (#94a3b8): secondary text, captions, and supportive copy.
-- **Muted Slate** (#475569): tertiary text and subtle informational tone.
+- **Display & Titres** : San Francisco Pro (`SF Pro Display`), graisse 700 à 800, espacement ajusté `-0.02em` à `-0.03em`.
+- **Corps de texte** : San Francisco Pro (`SF Pro Text`), graisse 400 à 500, interlignage 1.6 à 1.7, lisibilité sans fatigue.
+- **Labels & Données Techniques** : `SF Mono` / `JetBrains Mono`, format compact et précis.
 
-### Named Rules
-**The Signal Rule.** Use the primary accent on the strongest actions and interactive elements only; the rest of the page stays on neutral surfaces.
+## 4. Composants Glassmorphism
 
-## 3. Typography
-
-**Display Font:** Outfit, sans-serif
-**Body Font:** Outfit, sans-serif
-**Label / Mono Font:** JetBrains Mono, monospace
-
-**Character:** The typography feels precise and contemporary, with a geometric headline voice balanced by the restrained readability of a single sans-serif system font and a monospace accent for technical details.
-
-### Hierarchy
-- **Display** (800, clamp(3rem, 6vw, 5.6rem), 1.05, -0.03em): hero titles and main page statements.
-- **Headline** (700, 2.2rem, 1.2, -0.02em): section headings, large section calls, and major labels.
-- **Title** (700, 1.45rem, 1.3): card titles and important content headings.
-- **Body** (400, 1rem, 1.6): paragraphs, descriptive copy, and long-form text; keep line length around 65–75ch.
-- **Label** (600, 0.85rem, 1.5, 0.08em): metadata, status text, button labels, and monospace UI details.
-
-### Named Rules
-**The One Family Rule.** The system uses Outfit for primary text and JetBrains Mono only for technical labels, status, and accent metadata.
-
-## 4. Elevation
-
-Depth is conveyed through tonal layering, subtle backdrops, and occasional soft glow rather than heavy multi-layer shadows. Surfaces are generally low-rise; hover and active states introduce modest lift or border emphasis.
-
-### Shadow Vocabulary
-- **Hover Lift** (`0 10px 20px rgba(0, 0, 0, 0.25)`): used sparingly on interactive cards and buttons when they are hovered to signal interactivity.
-- **Soft Glow** (`0 0 10px rgba(0, 242, 254, 0.25)`): used for active accent surfaces, badges, and selected states to support the technical glow aesthetic.
-
-### Named Rules
-**The Flat Default Rule.** Surfaces rest flat and only gain perceptible depth in response to hover, focus, or active state.
-
-## 5. Components
-
-### Buttons
-- **Shape:** pill corners (30px) for buttons and CTA pills.
-- **Primary:** solid electric cyan background with white text, generous padding, bold weight, and a subtle upward hover lift.
-- **Secondary:** dark surface background with white text, light border or tinted surface outline, and the same pill silhouette.
-- **Hover / Focus:** color shift or glow on hover, with a short transform and ease-out transition.
-
-### Cards
-- **Corner Style:** rounded 24px.
-- **Background:** deep night surface tone (#0d0f17) with a translucent or softly layered fill.
-- **Shadow Strategy:** flat at rest, modest lift on hover only; avoid large blur shadows and paired border-shadow combos.
-- **Border:** fine translucent border for separation, not a decorative stripe.
-- **Internal Padding:** 24px for main cards, 16px for compact insets.
-
-### Inputs / Fields
-- **Style:** low-contrast dark fill with a subtle border, rounded 12px.
-- **Focus:** accent border glow and background brightening, with clear state change.
-- **Error / Disabled:** not present in the current system, but the field style should remain minimalist and consistent.
-
-### Navigation
-- **Style:** inline horizontal nav on wide screens, full-screen slide-in panel on mobile.
-- **Typography:** understated navigational copy with a stronger text color on active / hover states.
-- **Mobile Treatment:** fixed off-canvas panel that slides in from the left and preserves the dark surface.
-
-### Technical Accent Elements
-- **Mono labels and system status labels** use JetBrains Mono with small uppercase spacing and bright accent color to convey signal state.
-
-## 6. Do's and Don'ts
-
-### Do:
-- **Do** keep body text high contrast on dark surfaces: use `#f8fafc` on `#08090d` and `#0d0f17`.
-- **Do** use accent color sparingly for calls to action, interactive links, and status highlights.
-- **Do** preserve a clean page hierarchy without repeating tiny uppercase section labels on every section.
-- **Do** keep the experience grounded in a technical portfolio voice, not a decorative or magazine style.
-
-### Don't:
-- **Don't** use gradient text over gradients; keep text solid and legible.
-- **Don't** pair two similar sans families; keep Outfit as the main voice and JetBrains Mono only for technical labels.
-- **Don't** apply large rounded corners or heavy glassmorphism to cards and surfaces.
-- **Don't** rely on repeated hero-metric templates or identical card grids as the primary storytelling device.
+- **Navigation Flottante** : barre supérieure en verre satiné avec flou à 32px, logo à hiérarchie claire et badge de statut de disponibilité à Kinshasa.
+- **Piliers d'Ingénierie & Compétences** : cartes structurées en verre sombre poli avec reflets spéculaires et tags d'outillage concrets (sans pourcentages arbitraires).
+- **Cartes Projets & Modale Interactive** : fiches descriptives complètes avec filtrage dynamique par domaine et fiches techniques détaillées en modale.
+- **Formulaire & Contact** : panneau épuré avec redirection instantanée vers WhatsApp et coordonnées directes.
